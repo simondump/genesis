@@ -32,3 +32,22 @@ jobs:
 
       - name: Test
         run: go test -v ./...
+
+      - name: Upload executable
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: genesis
+          path: genesis
+
+  build_docker:
+    name: Build docker image
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+      - name: Publish docker image
+        run: docker push ghcr.io/ocular-d/genesis:nightly
