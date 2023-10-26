@@ -50,4 +50,6 @@ jobs:
         run: docker build . --file Dockerfile --tag genesis:nightly
 
       - name: Publish docker image
-        run: docker push ghcr.io/simondump/genesis:nightly
+        run: |
+          docker tage genesis:nightly ghcr.io/simondump/genesis:nightly
+          docker push ghcr.io/simondump/genesis:nightly
