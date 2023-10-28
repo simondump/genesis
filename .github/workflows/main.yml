@@ -1,4 +1,4 @@
-name: Main
+name: CI
 
 on: push
 
@@ -65,7 +65,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            ${{ startsWith(github.event.ref, 'refs/tags/v') && github.ref_name || steps.vars.outputs.sha_short }}
+            ${{ startsWith(github.event.ref, 'refs/tags/v') && github.ref_name }}
             ${{ startsWith(github.event.ref, 'refs/tags/v') && 'latest' || 'latest-dev' }}
 
       - name: Build and push Docker image
