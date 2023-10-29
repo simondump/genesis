@@ -39,7 +39,7 @@ jobs:
 
   build_docker:
 #    if: startsWith(github.event.ref, 'refs/tags/v')
-    name: Build and publish docker image
+    name: Build and publish docker images
 #    needs: build_and_test
     runs-on: ubuntu-latest
     permissions:
@@ -64,11 +64,6 @@ jobs:
           tags: |
             ${{ github.ref_name }}
             latest
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: all
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
