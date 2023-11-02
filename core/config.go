@@ -18,7 +18,7 @@ type AppConfig struct {
 	DbPath           string
 	JWTSecret        []byte
 	JWTExpiration    time.Duration
-	AppBuildVersion	 string
+	AppBuildVersion  string
 	AppBuildDate     string
 	AppBuildCommit   string
 	AppGinMode       string
