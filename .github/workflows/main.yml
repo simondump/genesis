@@ -1,8 +1,9 @@
 name: Build & Test
 
 on:
-  push: 
-    branches: [ * ]
+  push:
+    branches: 
+      - '*'
 
 jobs:
   build_and_test:
